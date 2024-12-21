@@ -119,6 +119,7 @@ public:
     void bubbleSort(){
         bool sort = false;
         Node<T>* node1;
+        if (size == 0 or size == 1) return;
         for (int outer = 0; !sort ; outer++){
             node1 = head;
             sort = true;
@@ -143,12 +144,12 @@ public:
 
 int main(){
     LinkedList<int> l1;
-    l1.insert(8); //0
+    // l1.insert(8); //0
     l1.insert(9); //1
     l1.insert(4); //2
-    l1.insert(1); //3
-    l1.insert(2); //4
-    l1.insert(3); //5
+    // l1.insert(1); //3
+    // l1.insert(2); //4
+    // l1.insert(3); //5
     // LinkedList<int> l2;
     // l2 = l1.linearSearch(1);
     // l2.display();
