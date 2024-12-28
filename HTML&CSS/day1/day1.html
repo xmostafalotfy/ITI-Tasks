@@ -1,0 +1,145 @@
+<!-- Q1) What is HTML? -->
+<!-- Hyper Text Markup Language, it's the structure of a web page, used to display elements or content -->
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello, World</title>
+    <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/4248/4248142.png">
+    <meta name="keywords" content="hello, World">
+    <meta name="author" content="Mostafa">
+    <meta name="description" content="First Html, CSS Task"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="test.css">
+</head>
+<body>
+    <pre> Hello,
+         <b>That's a bold text</b> 
+         <u>That's an underline text</u>
+         <del>That's a delete text</del>
+         <i>That's an italic text</i>
+         <mark>that's a marked text</mark>
+    </pre>
+
+    <!-- Give me the difference between { [b , strong], [i , em], [s, del], [u, ins] } in HTML. -->
+    <!-- b, i, u and s are used in to stylish while strong, em, del and ins have a meaning behind them that's maybe used for accessibility -->
+    
+    <p title="First P"> Hello, this is a paragraph</p>
+
+    <p>Before break <br> After break</p>
+    <p>Before line <hr> After line</p>
+
+    <ol type="I">
+        <li>List Item 1 <ol type="a">
+            <li>Nested Item 1.1</li>
+            <li>Nested Item 1.2</li>
+        </ol></li>
+        <li>List Item 2 <ol type="1">
+            <li>Nested Item 2.1</li>
+            <li>Nested Item 2.2 <ul type="circle">
+                <li>Nested Item 2.2.1</li>
+                <li>Nested Item 2.2.2 <ul type="disc">
+                    <li>Nested Item 2.2.2.1</li>
+                    <li>Neseted Item 2.2.2.2</li>
+
+                </ul></li>
+                <li>Nested Item 2.2.3</li>
+            </ul></li>
+            <li>Nested Item 2.3</li>
+        </ol></li>
+        <li>List Item 3 <ul type="disc">
+            <li>Nested Item 3.1</li>
+            <li>Nested Item 3.2</li>
+            <li>Nested Item 3.3</li>
+        </ul></li>
+    </ol>
+
+    <table border="1"  cellspacing="0">
+    <tr>
+        <th rowspan="3"> Day</th>
+        <th colspan="3">Seminar</th>
+    </tr>
+    <tr>
+        <th colspan="2">Schedule</th>
+        <th rowspan="2">Topic</th>
+    </tr>
+    <tr>
+        <th>Begin</th>
+        <th>End</th>
+    </tr>
+    <tr>
+        <td rowspan="2">Monday</td>
+        <td rowspan="2">8:00 a.m</td>
+        <td rowspan="2">5:00 p.m</td>
+        <td align="center">Introduction to XML</td>
+    </tr>
+    <tr>
+        <td > Validity: DTD and Relax NG</td>
+    </tr>
+    <tr>
+        <td rowspan="3" >Tuesday</td>
+        <td >8:00 a.m</td>
+        <td >11:00 a.m</td>
+        <td align="center" rowspan="3" > <table  border="1" height="100%" width="100%" cellpadding="8" cellspacing="0">
+            <tr><td align="center" height="100%">XPath </td></tr>
+            <tr><td align="center" height="100%">XSL Transformations</td></tr>
+        </table></td> 
+    </tr>
+    <tr>
+        <td >11:00 a.m</td>
+        <td >2:00 p.m</td>
+    </tr>
+
+    <tr>
+        <td >2:00 p.m</td>
+        <td >5:00 p.m</td>
+    </tr>
+    <tr></tr>
+    <tr>         
+        <td>Wednesday</td>
+        <td>8:00 a.m</td>
+        <td>12:00 p.m</td>
+        <td align="center">XSL Formating Objects</td>
+    </tr>
+    </table>
+
+
+    <a href="https://www.google.com" target="_self" alt="a">Click Here!</a>
+    <a href="https://www.google.com" target="_blank"alt="a">Click Here!</a>
+<br>
+<br>
+    <img src="test.png" >
+    <img src="https://cdn-icons-png.flaticon.com/512/4248/4248142.png" width="200px" height="200px">
+
+    <br>
+    <br>
+
+    <a href="https://www.google.com" target="_blank"><img src="test.png"></a>
+
+<br>
+<br>
+
+<iframe 
+    width="560" 
+    height="315" 
+    src="https://www.youtube.com/embed/InHEJMduTNo" 
+    title="YouTube video player" 
+    frameborder="0">
+</iframe>
+
+<br>
+
+<video width="640" height="360" controls>
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+</video>
+
+<audio controls>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+</audio>
+
+
+</body>
+</html>
