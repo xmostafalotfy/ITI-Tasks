@@ -161,7 +161,10 @@ public class LibraryMangmentSystem {
                                 .filter(c -> c.id == removeClientId)
                                 .findFirst()
                                 .orElseThrow(() -> new ItemNotFoundException("Client with ID " + removeClientId + " not found"));
-                                lib.ClientList.remove(clientToRemove);
+                                if (!clientToRemove.ClientBorrowList.isEmpty()){System.out.println("Can't Delete, Client borrowing item"); break;}
+                                lib.ClientList.remove(clientToRemove); 
+                                    
+                                
                         System.out.println("Client with ID " + removeClientId + " removed successfully.");
                         break;
                     case 9:
