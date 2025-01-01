@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lab 2</title>
+</head>
+<body>
+    <!--Exe.1-->
+    <form method="get" action="test.html"> <br>
+        <input type="text" value="UserName" required><br>
+        <input type="password" placeholder="Password"><br>
+        <input type="password" placeholder="Confirm Password"><br>
+        <input type="number" value="01" required><br>
+        <input type="email" placeholder="Email"><br>
+        <input type="radio" name="gender" value="male" id="m">
+        <label for="m"> Male</label><br>
+        <input type="radio" name="gender" value="female" id="f">
+        <label for="f">Female</label><br>
+        <input type="date" id="bd">
+        <label for="bd">BirthDate</label><br>
+        <label>Do You like this Course?</label><br>
+        <input type="radio" name="like" id="y" value="yes" disabled>
+        <label for="y">Yes</label><br>
+        <input type="radio" name="like" id="n" value="no" autofocus checked disabled>
+        <label for="n">No</label><br>
+        <input type="range" min="1" max="10" value="8">
+        <select name="col" >
+            <option value="" disabled selected>FavColor</option>
+            <option value="b">Black</option>
+            <option value="b">Black</option>
+            <option value="b">Black</option>
+        </select>
+        <br>
+        <textarea name="comment" placeholder="what's you feedback"></textarea><br>
+        <input type="file" > <br>
+        <input type="checkbox" name="lang" id="ar" value="ar">
+        <label for="ar">Arabic.</label><br>
+        <input type="checkbox" name="lang" id="en" value="en">
+        <label for="en">English.</label><br>
+        <input type="checkbox" name="lang" id="kr" value="kr">
+        <label for="kr">Korean.</label><br>
+        <input type="hidden" name="h" value="secret"><br>
+        <input type="submit">
+
+    </form>
+
+
+    <!-- Exe.2 & 3 & 4-->
+
+    <style>
+        form {
+            background-color: lightblue;
+            padding: 1em;
+            margin: 2rem auto;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            width: 50%;
+        }
+    </style>
+
+
+    <header>
+        <h1>Registration Form</h1>
+    </header>
+    <main>
+        <form>
+            <fieldset>
+                <legend>Register</legend>
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name"><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email"><br><br>
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password"><br><br>
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+    </main>
+    <footer>
+        <a href="">Terms and Conditions</a>
+    </footer>
+
+    <!-- Exe.5 -->
+
+    <style>
+        .c{
+            background-color:blueviolet;
+        }
+        #submit-button {
+            background-color: blue;
+            color: white;
+            padding: 0.5em 1em;
+            border: none;
+            cursor: pointer;
+        }
+        section label {
+            font-weight: bold;
+        }
+    </style>
+
+    <main>
+        <form>
+            <section>
+                <label for="feedback">Feedback:</label>
+                <textarea id="feedback" class="c"></textarea><br><br>
+                <button type="submit" id="submit-button">Submit</button>
+            </section>
+        </form>
+    </main>
+
+
+    <!-- Exe.6 -->
+    <style>
+        input[type="radio"] {
+            margin: 10px;
+        }
+    </style>
+
+    <!-- Exe.7 -->
+
+    <style>
+        .comment-section {
+            background-image: url('background.jpg');
+            padding: 1em;
+            margin: 1em;
+            border: 1px solid #ccc;
+        }
+    </style>
+
+    <article>
+        <section class="comment-section">
+            <form>
+                <label for="comment">Leave a comment:</label><br>
+                <textarea id="comment"></textarea><br><br>
+                <button type="submit">Submit</button>
+            </form>
+        </section>
+    </article>
+
+    <!-- Exe.8 -->
+    
+    <style>
+        form {
+            background-color: #fff;
+            color: #000;
+            margin: 2rem auto;
+            padding: 1rem;
+            border: 2px solid #000;
+            width: 300px;
+        }
+        fieldset {
+            border: 1px solid #000;
+            margin-bottom: 1rem;
+        }
+        label {
+            display: block;
+            margin: 0.5rem 0;
+        }
+        input, button {
+            width: 100%;
+            padding: 0.5rem;
+            margin: 0.5rem 0;
+        }
+        button {
+            background-color: #000;
+            color: #fff;
+            border: none;
+        }
+    </style>
+
+    <main>
+        <form>
+            <fieldset>
+                <legend>Register</legend>
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name">
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+
+                <button type="submit">Submit</button>
+            </fieldset>
+        </form>
+    </main>
+
+
+    <!-- Exe.9 -->
+
+        <style>
+            .box1 {
+                width: 50px;
+                height: 50px;
+                padding: 10px;
+                margin: 20px;
+                border: 2px solid black;
+            }
+            .box2 {
+                width: 100px;
+                height: 100px;
+                padding: 20px;
+                margin: 10px;
+                border: 1px solid red;
+                box-sizing: border-box;
+            }
+        </style>
+
+        <div class="box1">Box 1</div>
+        <div class="box2">Box 2</div>
+
+    
+
+</body>
+</html>
