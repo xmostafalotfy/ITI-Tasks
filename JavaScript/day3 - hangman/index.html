@@ -14,8 +14,15 @@
         <div class="main">
             <div class="header"><h1>Hangman</h1></div>
             <div class="content">
-                <div class="img" style="height:77vh; display:flex; justify-content:center; align-items: center;">
-                    <img src="image2.png" style="width: 40%;">
+                <div class="img" >
+                    <!-- <div class="wrong-1"></div>
+                    <div class="wrong-2"></div>
+                    <div class="wrong-3"></div>
+                    <div class="wrong-4"></div>
+                    <div class="wrong-5"></div>
+                    <div class="wrong-6"></div>
+                    <div class="wrong-7"></div> -->
+                    <img src="image2.png" >
                 </div>
                 <div class="words">
                     <div class="guess">
@@ -24,7 +31,9 @@
                         <p id="attempts" class="guessSection">Attempts left: 7</p>
                         <p id="timer" class="guessSection">Time left: 30 seconds</p>
                     </div>
-                    <div class="letters" id="letters" style="border-radius: 0 50% 50% 0;"></div>
+                    <div class="letters" id="letters" >
+                        <button id="btn-hint" onclick="hint()" disabled="" style="width: 100%;"><h3>Hent</h3></button>
+                    </div>
                 </div>
             </div>
         </div>

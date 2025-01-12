@@ -6,13 +6,13 @@ var words = {
     ],
     "brands": [
         "toyota", "tornado", "samsung", "apple", "intel", "google", "microsoft", 
-        "amazon", "nike", "adidas", "huawei", "sony", "tesla", "bmw", "coca-cola", 
+        "amazon", "nike", "adidas", "huawei", "sony", "tesla", "bmw", "coca cola", 
         "pepsi", "dell", "hp", "lenovo", "panasonic"
     ],
     "games": [
         "valorant", "fortnite", "pubg", "detroit", "minecraft", "overwatch", 
-        "league of legends", "apex legends", "counter-strike", "fall guys", "doom", 
-        "elden ring", "gta", "assassin's creed", "god of war", "the sims", "halo", 
+        "league of legends", "apex legends", "counter strike", "fall guys", "doom", 
+        "elden ring", "gta", "assassins creed", "god of war", "the sims", "halo", 
         "call of duty", "dark souls", "red dead redemption"
     ],
     "cities": [
@@ -23,6 +23,7 @@ var words = {
 }
 
 var topics = Object.keys(words)
+
 document.getElementById("nav").innerHTML = topics
     .map(topic => `<button onclick="startGame('${topic}')"><b>${topic}</b></button>`)
     .join("")
@@ -45,8 +46,6 @@ function startGame(topic) {
     guessedWord = word.split("").map(char => (char === " " ? "  " : "_"))
     updateWordDisplay()
     document.getElementById("feedback").innerText = "Click a letter to start guessing!"
-    document.getElementById("attempts").innerText = "Attempts left: 7"
-    document.getElementById("timer").innerText = `Time left: ${timeLeft} seconds`
 
     document.querySelectorAll("#letters button").forEach(button => {
         button.disabled = false
@@ -56,7 +55,7 @@ function startGame(topic) {
 }
 
 function updateWordDisplay() {
-    var display = guessedWord.map(char => (char === " " ? "  " : char)).join(" ")
+    var display = guessedWord.join(" ")
     document.getElementById("wordDisplay").innerText = display
 }
 
@@ -71,14 +70,25 @@ document.querySelectorAll("#letters button").forEach(button => {
     button.disabled = true
 })
 
+function hint(){
+
+    document.getElementById(`btn-hint`).disabled = true
+
+    var hintedChar = guessedWord.indexOf("_")
+    if(hintedChar != -1){ handleGuess(word[hintedChar].toUpperCase()) }
+    document.getElementById("feedback").innerText = `Hint! The letter "${word[hintedChar].toUpperCase()}" is in the word.`
+
+
+
+}
+
 function handleGuess(letter) {
     if (!word) {
         document.getElementById("feedback").innerText = "Please choose a topic first!"
         return
     }
 
-    var button = document.getElementById(`btn-${letter}`)
-    button.disabled = true 
+    document.getElementById(`btn-${letter}`).disabled = true 
 
     var count = 0
     for (var i = 0; i < word.length; i++) {
@@ -97,6 +107,9 @@ function handleGuess(letter) {
             alert(`Congratulations! You guessed the word: ${word}`)
             stopTimer()
             resetGame()
+        }else{
+            stopTimer()
+            startTimer()
         }
     } else {
         wrong++
@@ -107,15 +120,21 @@ function handleGuess(letter) {
             alert(`Game Over! The word was: ${word}`)
             stopTimer()
             resetGame()
+        }else{
+            stopTimer()
+            startTimer()
         }
     }
 }
 
 function startTimer() {
+    document.getElementById("timer").innerText = "Time left: 30 seconds"
     timeLeft = 30 
     timer = setInterval(() => {
+
         timeLeft--
         document.getElementById("timer").innerText = `Time left: ${timeLeft} seconds`
+        
 
         if (timeLeft === 0) {
             alert(`Time's up! You lost. The word was: ${word}`)
@@ -144,4 +163,6 @@ function resetGame() {
     guessedWord = []
     right = 0
     wrong = 0
+    timer = null
+    timeLeft = 30
 }
