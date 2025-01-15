@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="nav" id="nav"></div>
+    </nav>
+    <main>
+        <div class="main">
+            <div class="header"><h1>Hangman</h1></div>
+            <div class="content">
+                <div class="img" >
+                    <!-- <div class="wrong-1"></div>
+                    <div class="wrong-2"></div>
+                    <div class="wrong-3"></div>
+                    <div class="wrong-4"></div>
+                    <div class="wrong-5"></div>
+                    <div class="wrong-6"></div>
+                    <div class="wrong-7"></div> -->
+                    <img src="image2.png" >
+                </div>
+                <div class="words">
+                    <div class="guess">
+                        <h2 id="wordDisplay" class="guessSection">_ _ _ _ _ _ _ _ _ _</h2>
+                        <p id="feedback" class="guessSection">Choose a topic to play!</p>
+                        <p id="attempts" class="guessSection">Attempts left: 7</p>
+                        <p id="timer" class="guessSection">Time left: 30 seconds</p>
+                    </div>
+                    <div class="letters" id="letters" >
+                        <button id="btn-hint" onclick="hintClick()" disabled="" style="width: 100%;"><h3>Hent</h3></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="main.js"></script></body>
+</html>

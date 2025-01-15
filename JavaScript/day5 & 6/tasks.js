@@ -37,8 +37,7 @@ function isCar2(obj){
 // --------------------------------------------------------------------------------------------------------------
 
 
-const usersTableBody = document.querySelector('#usersTable tbody');
-
+const usersTableBody = document.getElementById('tableBody');     
 async function fetchAndDisplayData() {
     try {
         const usersResponse = await fetch('https://jsonplaceholder.typicode.com/users');
