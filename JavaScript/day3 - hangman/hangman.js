@@ -71,9 +71,7 @@ document.querySelectorAll("#letters button").forEach(button => {
 })
 
 function hint(){
-
     document.getElementById(`btn-hint`).disabled = true
-
     var hintedChar = guessedWord.indexOf("_")
     if(hintedChar != -1){ handleGuess(word[hintedChar].toUpperCase()) }
     document.getElementById("feedback").innerText = `Hint! The letter "${word[hintedChar].toUpperCase()}" is in the word.`
