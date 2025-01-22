@@ -1,0 +1,14 @@
+<div class="row">
+    <h1>Projects</h1>
+    @for (project of projects;track project.title; let id = $index) {
+        <div class="col-sm-4">
+            <div class="card" [style]="id%2==0? 'background-color:#828282;':'background-color:#222222;'">
+                <div class="card-body">
+                    <h5 class="card-title">{{id}}</h5>
+                    <p class="card-text">{{project.desc}}</p>
+                    <a href="https://github.com/xmostafalotfy/ITI-Tasks" class="btn btn-light">Go somewhere</a>
+                </div>
+            </div>
+        </div>
+    }
+</div>

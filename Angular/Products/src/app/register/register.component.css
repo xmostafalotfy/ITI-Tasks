@@ -1,0 +1,54 @@
+.row {
+    height: auto;
+    margin: 0;
+}
+
+.register-card {
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow:
+    2.8px 2.8px 2.2px rgba(0, 0, 0, 0.02),
+    6.7px 6.7px 5.3px rgba(0, 0, 0, 0.028),
+    12.5px 12.5px 10px rgba(0, 0, 0, 0.035),
+    22.3px 22.3px 17.9px rgba(0, 0, 0, 0.042),
+    41.8px 41.8px 33.4px rgba(0, 0, 0, 0.05),
+    100px 100px 80px rgba(0, 0, 0, 0.07)
+    ;
+    height: auto;
+}
+
+.card-title {
+    color: black;
+    font-weight: bold;
+}
+
+.form-control {
+    border-radius: 5px;
+    border: 1px solid gray;
+    padding: 10px;
+}
+
+.text-decoration-none {
+    color: blue;
+    font-weight: bold;
+}
+
+.text-decoration-none:hover {
+    color: #007bff;
+}
+
+.text-center p {
+    margin-bottom: 0;
+}
+button {
+    width: 100%;
+    padding: 0.5em;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+  }
+button:disabled {
+    background-color: #ccc;
+}

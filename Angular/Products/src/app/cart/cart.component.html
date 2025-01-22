@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="container d-flex flex-column justify-content-between p-5">
+      <div class="items">
+        @for (item of cart; track $index) {
+        <div class="item p-4 my-4">
+          <div class="row mb-2" style="padding:0;">
+            <div class="col-8">
+              <h2>{{ item.product.title }}</h2>
+              <div class="d-flex justify-content-between">
+                <div class="rate d-flex flex-column mb-3">
+                  <span class="fw-bold text-success">{{ item.product.price }}</span>
+                  <span style="color: darkgoldenrod;"> 
+                    {{Math.round(item.product.rating) > item.product.rating ? '★'.repeat(item.product.rating) +'⯪' : '★'.repeat(item.product.rating)}}
+                  </span>
+                </div>
+                <div class="quantity-selector">
+                  <button class="decrement" (click)="decrementItem(item)">-</button>
+                  <input
+                    type="number"
+                    class="quantity-input"
+                    id="quantity"
+                    [value]="item.amount"
+                    disabled
+                  />
+                  <button class="increment" (click)="incrementItem(item)">+</button>
+                </div>
+              </div>
+            </div>
+            <div class="col-3 d-flex justify-content-end">
+              <img [src]="item.product.thumbnail" alt="{{ item.product.title }}" style="width:50%;" />
+            </div>
+          </div>
+        </div>
+    }
+      </div>
+      <div class="summary mt-4 text-secondary">
+        <h4>Total Items: {{ totalItems }}</h4>
+        <h4>Total Bill: {{ Math.floor(totalBill) }}$</h4>
+      </div>
+    </div>
+  </div>
+  

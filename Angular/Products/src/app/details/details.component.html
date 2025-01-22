@@ -1,0 +1,59 @@
+<div class="row">
+        @if (list !== undefined) {
+        <div class="col-6 imgs">
+            <div class="main-image">
+                <img src="{{list[0].thumbnail}}" alt="Main Product" class="main-product-image">
+            </div>
+            
+            <div class="d-flex justify-content-center align-items-center thumbnails">
+                @for (im of list[0].images; track $index) {
+                        <img src="{{im}}" class="thumbnail">
+                }
+            </div>
+        </div>
+        
+        <div class="col-6 info">
+            <h1 class="product-title">{{list[0].title}}</h1>
+            <p class="product-description">
+                {{list[0].description}}
+            </p>
+            <span style="color: goldenrod; font-size: 1.8em;"><b>
+                {{Math.round(list[0].rating) > list[0].rating ? '★'.repeat(list[0].rating) +'⯪' : '★'.repeat(list[0].rating)}}
+                </b></span> <span style="color: darkslategrey; position: relative; bottom: 1%;">({{list[0].rating}})</span>
+                <br>
+                <hr class="bg-primary border-5 border-top border-primary" />
+
+                <p><b>Categories</b></p>
+                @for (cat of list[0].tags; track $index) {
+                        <span class=" text-dark" style="padding: 0.4em; border-radius: 18px; margin-right: 1em; background-color: rgb(196, 196, 196);">  {{cat}}  </span>
+                }
+            <!-- <hr class="bg-primary border-5 border-top border-primary" /> -->
+                <br>
+            <div class="price" style="margin-top: 1em;">
+                <span class="text-success"><b>{{list[0].price}}$</b></span>
+                <br>
+
+            </div>
+            <div class="availability">
+                @if (list[0].availabilityStatus !== 'Low Stock') {
+                        <p class="in-stock text-white bg-success" style="border-radius: 18px; text-align: center; width: 18%;">In Stock</p> 
+                        <span class="text-dark"> <b>{{list[0].stock}}</b> Items Left!</span>
+                }@else {
+                        <p class="in-stock text-white bg-warning" style="border-radius: 18px; text-align: center; width: 18%;">Low Stock</p> 
+                        <span class="items-left">Only <b>{{list[0].stock}}</b> Items Left!</span>
+
+                }
+            </div>
+            <div class="quantity-selector">
+                <button class="decrement" (click)="sub()">-</button>
+                <input type="number" value="{{quantity}}" class="quantity-input" id="quantity" disabled>
+                <button class="increment" (click)="add()">+</button>
+            </div>
+            <hr class="bg-primary border-5 border-top border-primary" />
+            <div class="action-buttons">
+                <button class="btn btn-primary" (click)="buy(list[0].id,quantity)">Buy Now</button>
+            </div>
+        </div>
+}
+    </div>
+    

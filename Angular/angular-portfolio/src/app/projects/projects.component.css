@@ -1,0 +1,29 @@
+.row{
+    text-align: center;
+    background-color: aliceblue;
+    padding: 40px;
+    width: 100%;
+    margin: 0;
+    box-shadow:0px 2px 10px 6px black;
+
+}
+
+.row h1{
+    font-family:'Times New Roman', Times, serif ;
+    font-size:60px;
+    text-shadow: 2px 2px 4px rgb(0, 0, 0);
+    padding-bottom: 20px;
+}
+
+.card{
+    background-color: #818181;
+    color: aliceblue;
+    box-shadow:0px 2px 10px 6px black;
+    margin: 12px;
+    height: 240px;
+    padding-top: 40px;
+}
+
+a{
+    box-shadow:0px 2px 8px 2px gray;
+}

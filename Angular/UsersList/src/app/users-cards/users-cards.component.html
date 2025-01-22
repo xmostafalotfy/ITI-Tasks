@@ -1,0 +1,20 @@
+<div class="card" >
+    <img class="card-img-top" src="{{user.image}}">
+    <div class="card-body">
+        @if (user.role === 'admin') {
+            <span class="badge badge-success">Admin</span>
+        } @else {
+            @if (user.role === 'user') {
+                <span class="badge badge-info">User</span>
+            }@else {
+                <span class="badge badge-secondary">Moderator</span>
+
+            }
+        }
+    <pre class="card-text">Username : {{user.username}}
+Email : {{user.email}}
+phone : {{user.phone}}
+BD : {{user.birthDate}}
+      </pre>
+    </div>
+  </div>

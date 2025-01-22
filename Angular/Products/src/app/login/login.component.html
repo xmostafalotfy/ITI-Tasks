@@ -1,0 +1,53 @@
+<div class="row py-5">
+
+  <div class="login-container">
+    <h2>Login</h2>
+    <form #loginForm="ngForm" (ngSubmit)="onSubmit()">
+      <div>
+        <label for="email">Email Address</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          ngModel
+          required
+          pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
+          #email="ngModel"
+          />
+          @if (email.invalid&&email.touched) {
+            <div>
+              @if (email.errors?.['required']) {
+                <small>Email is required.</small>
+              }
+              @if (email.errors?.['pattern']) {
+                  <small >Enter a valid email address.</small>
+                }
+              </div>
+        }
+        </div>
+  
+      <div>
+        <label for="password">Password</label>
+        <input
+        type="password"
+        id="password"
+        name="password"
+        ngModel
+        required
+        #password="ngModel"
+        />
+        @if (password.invalid && password.touched) {
+            @if (password.errors?.['required']) {
+                <div>
+                  <small>Password is required.</small>
+                </div>
+              }
+            }
+          </div>
+          
+      <button type="submit" [disabled]="loginForm.invalid">Login</button>
+    </form>
+    <br>
+    <p>Don't have an account?<a routerLink="/register" style="text-decoration: none; color: blue;"><b> Click Here!</b></a></p>
+  
+</div>
