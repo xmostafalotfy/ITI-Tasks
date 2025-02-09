@@ -24,8 +24,10 @@ var words = {
 
 var topics = Object.keys(words)
 
-document.getElementById("nav").innerHTML = topics
-    .map(topic => `<button onclick="startGame('${topic}')"><b>${topic}</b></button>`)
+window.addEventListener("load", menuSound)
+
+document.getElementById("nav").innerHTML += topics
+    .map(topic => `<button onclick="startGame('${topic}')" onmouseenter="menuSound()" ><b>${topic}</b></button>`)
     .join("")
 
 var word = ""
@@ -41,6 +43,10 @@ document.querySelectorAll("#letters button").forEach(button => {
 
 function startGame(topic) {
     resetGame()
+    disableButtons()
+    document.getElementById("hangman").src="images/empty.webp";
+    document.getElementById("popwin").style.display = "none";
+    document.getElementById("nav").style.display = "none";
 
     word = words[topic][Math.floor(Math.random() * words[topic].length)]
     guessedWord = word.split("").map(char => (char === " " ? "  " : "_"))
@@ -102,9 +108,17 @@ function handleGuess(letter) {
 
         right += count
         if (right === word.replace(/ /g, "").length) {
-            alert(`Congratulations! You guessed the word: ${word}`)
-            stopTimer()
+            let scopeWord = word;
+            setTimeout(() => {
+            document.getElementById("popwin").style.display = "flex"
+            document.getElementById("end").style.display = "flex"
+            document.getElementById("emo").src = "images/victory.gif"
+            document.getElementById("end-letter").innerHTML = "Awesome job!<br/> You saved the stick figure... "
+            document.getElementById("end-word").innerHTML = `The word was '${scopeWord}'`
             resetGame()
+            },1000);
+            disableButtons()
+            stopTimer()
         }else{
             stopTimer()
             startTimer()
@@ -113,11 +127,26 @@ function handleGuess(letter) {
         wrong++
         document.getElementById("feedback").innerText = `Wrong! The letter "${letter}" is not in the word.`
         document.getElementById("attempts").innerText = `Attempts left: ${7 - wrong}`
+        if (wrong >= 1){
+            document.getElementById("hangman").src = `images/hangman-${wrong-1}.svg`
+        }
+
 
         if (wrong === 7) {
-            alert(`Game Over! The word was: ${word}`)
-            stopTimer()
+            document.getElementById("hangman").src = `images/hangman-6.svg`
+            let scopeWord = word;
+            setTimeout(() => {
+            document.getElementById("popwin").style.display = "flex"
+            document.getElementById("end").style.display = "flex"
+            document.getElementById("emo").src = "images/lost.gif"
+            document.getElementById("end-letter").innerHTML = "You ran out of attempts!<br/> The hangman got you... "
+            document.getElementById("end-word").innerHTML = `The word was '${scopeWord}'`
             resetGame()
+            },1000);
+            disableButtons()
+
+            stopTimer()
+
         }else{
             stopTimer()
             startTimer()
@@ -135,9 +164,18 @@ function startTimer() {
         
 
         if (timeLeft === 0) {
-            alert(`Time's up! You lost. The word was: ${word}`)
+            let scopeWord = word;
+            setTimeout(() => {
+                document.getElementById("popwin").style.display = "flex"
+                document.getElementById("end").style.display = "flex"
+                document.getElementById("emo").src = "images/lost.gif"
+                document.getElementById("end-letter").innerHTML = "Tick-tock... You ran out of time! "
+                document.getElementById("end-word").innerHTML = `The word was '${scopeWord}'`
+                resetGame()
+                },1000);            
             stopTimer()
-            resetGame()
+            disableButtons()
+
         }
     }, 1000)
 }
@@ -146,12 +184,18 @@ function stopTimer() {
     clearInterval(timer)
 }
 
-function resetGame() {
-    stopTimer()
-    document.getElementById("wordDisplay").innerText = "_ _ _ _ _ _ _ _ _ _"
+function disableButtons(){
+
     document.querySelectorAll("#letters button").forEach(button => {
         button.disabled = true 
     })
+
+}
+
+function resetGame() {
+    stopTimer()
+    document.getElementById("wordDisplay").innerText = "_ _ _ _ _ _ _ _ _ _"
+
 
     document.getElementById("feedback").innerText = "Choose a topic from the navbar to start playing!"
     document.getElementById("attempts").innerText = "Attempts left: 7"
@@ -163,4 +207,15 @@ function resetGame() {
     wrong = 0
     timer = null
     timeLeft = 30
+}
+
+function again(){
+    document.getElementById("end").style.display = "none";
+    document.getElementById("nav").style.display = "flex";
+
+}
+
+function menuSound(){
+    var audio = new Audio('menu-select.wav');
+    audio.play();
 }

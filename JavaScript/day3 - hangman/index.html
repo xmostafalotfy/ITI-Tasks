@@ -7,22 +7,26 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <div class="nav" id="nav"></div>
-    </nav>
+      <div class="win" id="popwin">
+        <div class="nav" id="nav"> 
+            <h2>Choose a Topic</h2>
+        </div> 
+        <div class="end-game" id="end">
+            <img width="60%" height="50%" id="emo">
+            <p id="end-letter"></p>
+            <p id="end-word"></p>
+            <button onclick="again()" onmouseenter="menuSound()">Play Again</button>
+        </div>
+    </div>
+
     <main>
+
         <div class="main">
-            <div class="header"><h1>Hangman</h1></div>
+            <div class="header"><h1><b>Hangman</b></h1></div>
             <div class="content">
                 <div class="img" >
-                    <!-- <div class="wrong-1"></div>
-                    <div class="wrong-2"></div>
-                    <div class="wrong-3"></div>
-                    <div class="wrong-4"></div>
-                    <div class="wrong-5"></div>
-                    <div class="wrong-6"></div>
-                    <div class="wrong-7"></div> -->
-                    <img src="image2.png" >
+
+                    <img id="hangman" width="100%">
                 </div>
                 <div class="words">
                     <div class="guess">
@@ -32,7 +36,7 @@
                         <p id="timer" class="guessSection">Time left: 30 seconds</p>
                     </div>
                     <div class="letters" id="letters" >
-                        <button id="btn-hint" onclick="hint()" disabled="" style="width: 100%;"><h3>Hent</h3></button>
+                        <button id="btn-hint" onclick="hint()" disabled="" style="width: 100%;"><h3>Hint</h3></button>
                     </div>
                 </div>
             </div>
