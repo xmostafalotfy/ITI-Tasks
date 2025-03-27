@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookStore</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <style>
+        .more{
+            color:lightgreen;
+        }
+        .less{
+            color:lightsalmon;
+        }
+    </style>
+
+</head>
+<body class="bg-dark">
+    <div class="container app">
+        <nav class="bg-secondary bg-opacity-25 w-100 px-2 py-3 my-2 border border-info-subtle rounded d-flex justify-content-between align-items-center">
+            <a href="#" class="text-decoration-none text-light" @click="homePage()"><h4>BookStore</h4></a>
+            <div class="d-flex align-items-center">
+                <p class="text-light m-0 px-3">
+                    {{whishlist.length }} {{whishlist.length === 1 ? 'item': 'items'}} in your whishlist</p>
+                <button class="btn btn-outline-info" @click="whishList()">Wishlist</button>
+            </div>
+        </nav>
+
+        <div class="d-flex justify-content-between flex-wrap" v-if="homepage === true">
+            <div class="card bg-secondary bg-opacity-25 my-2 text-light" style="width: 18rem;" v-for="book in books">  
+                <img :src="book.image" class="card-img-top" alt="Book Image" style="height: 22rem;">
+                <div class="card-body">
+                    <h5 class="card-title" :title="book.author">{{book.name}}</h5>
+                    <p class="card-text mb-1"><strong>Category:</strong> {{book.category}}</p>
+                    <p class="card-text mb-1"><strong>Author:</strong> {{book.author}}</p>
+                    <p :class="['card-text', 'mb-1', book.pages > 50 ? 'more': 'less']"><strong>Pages:</strong> {{book.pages}}</p>
+                    <p class="card-text mb-1"><strong>Price:</strong> {{formatPrice(book.price)}}</p>
+                    <p class="card-text mb-3"><strong>ISBN:</strong> {{book.isbn}}</p>
+                     <button class="btn btn-outline-info w-100" :disabled="whishlist.includes(book)" @click="addToList(book)">Add to Wishlist</button>
+                </div>
+          </div>
+        </div>
+        <div v-else>
+            <div class="bg-secondary bg-opacity-25 rounded d-flex justify-content-center p-5">
+
+                <table class="table table-striped table-dark" v-if="whishlist.length > 0">
+
+                    <thead>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Author</th>
+                        <th>Pages</th>
+                        <th>Price</th>
+                        <th>ISBN</th>
+                        <th>Remove</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="book in whishlist">
+                            <td>{{book.name}}</td>
+                            <td>{{book.category}}</td>
+                            <td>{{book.author}}</td>
+                            <td>{{book.pages}}</td>
+                            <td>{{formatPrice(book.price)}}</td>
+                            <td>{{book.isbn}}</td>
+                            <td><button class="btn btn-outline-danger" @click="remove(book)">Remove</button></td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <h2 class="text-danger py-5" v-else> There is no books in your wishlist yet!</h2>
+
+            </div>
+
+        </div>
+
+        
+    </div>
+</body>
+<script>
+    const app = Vue.createApp({
+	data: () => ({ 
+                books:[
+        {
+            isbn: "978-3-16-148410-0",
+            name: "JavaScript for Beginners",
+            category: "Programming",
+            image: "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1568806567l/50842004.jpg",
+            pages: 320,
+            author: "John Doe",
+            price: 29.99
+        },
+        {
+            isbn: "978-0-13-235088-4",
+            name: "Clean Code",
+            category: "Software Engineering",
+            image: "https://m.media-amazon.com/images/I/41jEbK-jG+L._SX374_BO1,204,203,200_.jpg",
+            pages: 464,
+            author: "Robert C. Martin",
+            price: 39.99
+        },
+        {
+            isbn: "978-1-59327-584-6",
+            name: "Eloquent JavaScript",
+            category: "Programming",
+            image: "https://eloquentjavascript.net/img/cover.jpg",
+            pages: 472,
+            author: "Marijn Haverbeke",
+            price: 25.99
+        },
+        {
+            isbn: "978-0-201-61622-4",
+            name: "Design Patterns",
+            category: "Software Architecture",
+            image: "https://m.media-amazon.com/images/I/81IGFC6oFmL._AC_UF1000,1000_QL80_.jpg",
+            pages: 395,
+            author: "Erich Gamma",
+            price: 49.99
+        },
+        {
+            isbn: "978-1-491-94704-6",
+            name: "You Don’t Know JS",
+            category: "JavaScript",
+            image: "https://m.media-amazon.com/images/I/91-PASfiUVL._AC_UF1000,1000_QL80_.jpg",
+            pages: 278,
+            author: "Kyle Simpson",
+            price: 19.99
+        },
+        {
+            ISBN: "978-0-123456-47-2",
+            name: "The Quick Guide to Vue",
+            category: "Programming",
+            image: "https://images.unsplash.com/photo-1512820790803-83ca734da794",
+            pages: 48,
+            author: "Alex Greene",
+            price: 5.99
+        }
+    ],
+    whishlist:[],
+    homepage:true,
+
+    }),
+    methods:{
+        homePage(){
+            this.homepage = true
+        },
+        whishList(){
+            this.homepage = false
+        },
+        addToList(book){
+            this.whishlist.push(book);
+        },
+        remove(removedBook){
+            this.whishlist = this.whishlist.filter((book) => book != removedBook)
+        },
+        formatPrice(amount) {
+            return new Intl.NumberFormat('en-SA', {
+            style: 'currency',
+            currency: 'SAR'
+            }).format(amount);
+        }
+    }
+}).mount('.app');
+</script>
+</html>
